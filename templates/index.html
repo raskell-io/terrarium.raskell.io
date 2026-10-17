@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block body_class %}home{% endblock %}
+{% block content %}
+
+<section class="hero">
+    <div class="wrap hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">A world simulation</p>
+            <h1 class="title">Terrarium</h1>
+            <p class="hero-pitch">{{ config.extra.tagline }}.</p>
+            <p class="hero-sub">People forage, share, quarrel, claim land, build shelters, fall ill and raise children. Nobody scripts what they do. You watch, and see what kind of society comes of it.</p>
+            <div class="actions">
+                <a class="btn btn-moss btn-large" href="{{ config.extra.play_url }}">Watch a world</a>
+                <a class="btn btn-ghost btn-large" href="/run/">Run it yourself</a>
+            </div>
+        </div>
+        <figure class="terminal">
+            <div class="terminal-bar"><span>terrarium</span><span class="muted">first winter · live</span></div>
+            {#- The real viewer, running in the visitor's browser. It takes the keyboard only when clicked #}
+            <iframe class="terminal-screen" src="{{ config.extra.play_url }}?embed#first_winter" title="A live Terrarium world: First Winter" loading="lazy"></iframe>
+            <figcaption>This world is running in your browser right now. Click it to take the controls: <kbd>Space</kbd> pauses, <kbd>Tab</kbd> follows someone else, <kbd>?</kbd> lists the rest.</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="band">
+    <div class="wrap">
+        <h2 class="section-title">Who lives here</h2>
+        <p class="section-lead">Every person is their own small mind. They act on what they believe, and what they believe can be wrong.</p>
+        <div class="cards cards-4">
+            <article class="card">
+                <p class="glyph">☺</p>
+                <h3>Personality</h3>
+                <p>Five traits that hold for life: open or set in their ways, careful or careless, outgoing or quiet, agreeable or not, steady or anxious. They tilt every choice.</p>
+            </article>
+            <article class="card">
+                <p class="glyph">?</p>
+                <h3>Beliefs</h3>
+                <p>Where food is, who can be trusted, whose land this is. Learned from what they see and are told, so they can be out of date, or simply mistaken.</p>
+            </article>
+            <article class="card">
+                <p class="glyph">♥</p>
+                <h3>Needs</h3>
+                <p>Hunger, energy, health. Food spoils, winter comes, and a body that runs out of reserves dies. Survival is the pressure everything else grows from.</p>
+            </article>
+            <article class="card">
+                <p class="glyph">≡</p>
+                <h3>Memory</h3>
+                <p>Who gave them food, who took it, who courted them, who stood by. Kindness and grievance both linger, and shape who they turn to next.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="band band-dark">
+    <div class="wrap two-col">
+        <div>
+            <h2 class="section-title">Nothing is scripted</h2>
+            <p class="section-lead">There is no code for markets, chiefs or feuds. There are hungry people, a world with rules, and time. What you see in a run comes out of that.</p>
+        </div>
+        <ul class="emerges">
+            <li><span class="dot moss"></span><div><b>Sharing.</b> Food flows from those with plenty to those without, most readily between kin and friends, and between people who have given before.</div></li>
+            <li><span class="dot gold"></span><div><b>Ownership.</b> People claim the land around their homes. Owners ward off trespassers; most intruders back off, and a desperate few don't.</div></li>
+            <li><span class="dot coral"></span><div><b>Conflict.</b> When food runs short and trust runs low, some take by force what they can't find, and those they wrong remember.</div></li>
+            <li><span class="dot lilac"></span><div><b>Families.</b> Courtships turn into bonds, bonds into children. In a big enough world, generations follow one another.</div></li>
+            <li><span class="dot sky"></span><div><b>Hard years.</b> Droughts and storms come without warning; illness passes between neighbours. Settlements rise, decay and are rebuilt.</div></li>
+        </ul>
+    </div>
+</section>
+
+<section class="band">
+    <div class="wrap">
+        <h2 class="section-title">Two kinds of mind</h2>
+        <p class="section-lead">The world never decides for anyone. It applies what happens and lets people see it. The choosing is done by one of two minds.</p>
+        <div class="cards cards-2">
+            <article class="card card-mind">
+                <p class="label">With a language model</p>
+                <h3>They deliberate</h3>
+                <p>Give Terrarium a Claude API key and each person thinks their day through: who they are, what they believe, what they see, what they need. Whether to share, steal, court, fight or make peace is theirs to decide.</p>
+                <a href="/how-it-works/">How a mind is put together →</a>
+            </article>
+            <article class="card card-mind">
+                <p class="label">Without one</p>
+                <h3>They act on instinct</h3>
+                <p>In your browser, people run on instinct: rules taken from behavioural ecology and social psychology, from Hamilton's rule for sharing to the logic of contests over territory, with every source listed.</p>
+                <a href="/instinct/">The science behind instinct →</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="band band-dark">
+    <div class="wrap">
+        <h2 class="section-title">The world they live in</h2>
+        <p class="section-lead">A grid of land with its own physics, indifferent to the people on it.</p>
+        <ul class="world-grid">
+            <li><code class="g moss">*</code><div><b>Seasons</b><span>Spring growth, summer plenty, a winter that kills off standing food.</span></div></li>
+            <li><code class="g gold">.</code><div><b>Valleys and uplands</b><span>Fertile land in patches, barren high ground between. Climbing costs effort.</span></div></li>
+            <li><code class="g sky">~</code><div><b>Lakes and fish</b><span>Water no one can cross, fished down and refilling.</span></div></li>
+            <li><code class="g moss">♣</code><div><b>Forests</b><span>Wood regrows slowly; thick woods hide what's beyond them.</span></div></li>
+            <li><code class="g gold">d</code><div><b>Wild game</b><span>Herds that breed, wander and can be hunted out.</span></div></li>
+            <li><code class="g coral">!</code><div><b>Weather and illness</b><span>Droughts, storms and fevers, on no one's schedule.</span></div></li>
+        </ul>
+        <p><a class="more" href="/world/">More about the world →</a></p>
+    </div>
+</section>
+
+<section class="band">
+    <div class="wrap intro">
+        <div class="prose-wide">
+            {{ section.content | safe }}
+        </div>
+        <a class="seal" href="https://raskell.io">
+            <img src="/img/raskell-stamp.png" alt="The raskell.io seal" width="200" height="200" loading="lazy">
+            <span>produced by <b>raskell.io</b></span>
+        </a>
+    </div>
+</section>
+{% endblock %}

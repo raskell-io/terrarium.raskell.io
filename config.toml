@@ -1,0 +1,38 @@
+# Zola configuration for the Terrarium website
+# https://www.getzola.org/documentation/getting-started/configuration/
+
+base_url = "https://terrarium.raskell.io"
+title = "Terrarium"
+description = "A world simulation where people forage, share, quarrel, build, fall ill and raise children, and nobody scripts what they do. Watch it in your browser."
+default_language = "en"
+
+compile_sass = true
+minify_html = true
+build_search_index = false
+generate_feeds = false
+
+[markdown]
+smart_punctuation = true
+external_links_target_blank = true
+external_links_no_referrer = true
+
+[slugify]
+paths = "on"
+anchors = "on"
+
+[extra]
+author = "raskell.io"
+tagline = "A small world, and the people who try to live in it"
+pitch = "A world simulation of emergent societies"
+github = "https://github.com/raskell-io/terrarium"
+codeberg = "https://codeberg.org/raskell-io/terrarium"
+docs = "https://github.com/raskell-io/terrarium/tree/main/docs"
+play_url = "/play/"
+keywords = "Terrarium, simulation, agent-based model, emergence, artificial society, Claude, LLM agents, behavioural ecology, WebAssembly, Rust, ratatui"
+
+nav_links = [
+    { name = "How it works", url = "/how-it-works/" },
+    { name = "The world", url = "/world/" },
+    { name = "Instinct", url = "/instinct/" },
+    { name = "Run it", url = "/run/" },
+]

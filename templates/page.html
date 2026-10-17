@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body_class %}article{% endblock %}
+{% block content %}
+<article class="wrap article-wrap">
+    <header class="article-head">
+        {%- if page.extra.eyebrow %}<p class="eyebrow">{{ page.extra.eyebrow }}</p>{% endif %}
+        <h1>{{ page.title }}</h1>
+        {%- if page.description %}<p class="lead">{{ page.description }}</p>{% endif %}
+    </header>
+    <div class="prose">
+        {{ page.content | safe }}
+    </div>
+    {%- if page.extra.next %}
+    <nav class="next-page" aria-label="Next">
+        <a href="{{ page.extra.next.url }}"><span class="muted">Next</span> {{ page.extra.next.title }} →</a>
+    </nav>
+    {%- endif %}
+</article>
+{% endblock %}

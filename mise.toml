@@ -1,0 +1,26 @@
+# mise configuration for terrarium.raskell.io
+# https://mise.jdx.dev
+
+[tools]
+zola = "0.21"
+
+[tasks.serve]
+description = "Start development server (the viewer itself is not served; use preview)"
+run = "zola serve --drafts"
+
+[tasks.build]
+description = "Build the website into public/"
+run = "zola build"
+
+[tasks.fetch-viewer]
+description = "Put the latest browser build of the viewer into public/play/"
+run = "scripts/fetch-viewer.sh public/play"
+
+[tasks.preview]
+description = "Build the full site with the viewer and serve it like Cloudflare Pages does"
+depends = ["build"]
+run = "scripts/fetch-viewer.sh public/play && npx --yes wrangler@4 pages dev public"
+
+[tasks.clean]
+description = "Clean build artifacts"
+run = "rm -rf public"

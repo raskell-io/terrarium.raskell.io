@@ -1,0 +1,6 @@
+# The viewer's files keep their names between releases, so browsers revalidate them
+/play/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/img/*
+  Cache-Control: public, max-age=86400
