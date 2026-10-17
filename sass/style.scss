@@ -547,7 +547,7 @@ h1, h2, h3 { color: var(--fg-strong); text-wrap: balance; line-height: 1.2; }
     max-width: 52ch;
     p { margin: 0 0 6px; font-size: 16px; }
 }
-.footer-mark-link { flex: none; .mark { width: 48px; height: 48px; } &:hover .mark { color: var(--moss); } }
+.footer-logo { flex: none; img { width: 48px; height: 48px; display: block; } }
 .footer-mark { font-weight: 700; color: var(--fg-strong); font-size: 16px !important; }
 .footer-links {
     display: grid;
