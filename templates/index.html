@@ -5,13 +5,13 @@
 <section class="hero">
     <div class="wrap hero-grid">
         <div class="hero-copy">
-            <p class="eyebrow">A world simulation</p>
+            <p class="eyebrow">A world of AI agents</p>
             <h1 class="title">Terrarium</h1>
-            <p class="hero-pitch">{{ config.extra.tagline }}.</p>
-            <p class="hero-sub">People forage, share, quarrel, claim land, build shelters, fall ill and raise children. Nobody scripts what they do. You watch, and see what kind of society comes of it.</p>
+            <p class="hero-pitch">Every person in it is an AI agent with a mind of its own.</p>
+            <p class="hero-sub">A language model is each person's intelligence: it reads what they see, need, believe and remember, and decides what they do. Put a hundred of them in a world with seasons, scarcity and each other, and watch what kind of society comes of it.</p>
             <div class="actions">
                 <a class="btn btn-moss btn-large" href="{{ config.extra.play_url }}">Watch a world</a>
-                <a class="btn btn-ghost btn-large" href="/run/">Run it yourself</a>
+                <a class="btn btn-ghost btn-large" href="#agents">How a mind works</a>
             </div>
         </div>
         <figure class="terminal">
@@ -23,32 +23,140 @@
     </div>
 </section>
 
-<section class="band">
+<section class="band agents" id="agents">
     <div class="wrap">
-        <h2 class="section-title">Who lives here</h2>
-        <p class="section-lead">Every person is their own small mind. They act on what they believe, and what they believe can be wrong.</p>
-        <div class="cards cards-4">
-            <article class="card">
-                <p class="glyph">☺</p>
-                <h3>Personality</h3>
-                <p>Five traits that hold for life: open or set in their ways, careful or careless, outgoing or quiet, agreeable or not, steady or anxious. They tilt every choice.</p>
-            </article>
-            <article class="card">
-                <p class="glyph">?</p>
-                <h3>Beliefs</h3>
-                <p>Where food is, who can be trusted, whose land this is. Learned from what they see and are told, so they can be out of date, or simply mistaken.</p>
-            </article>
-            <article class="card">
-                <p class="glyph">♥</p>
-                <h3>Needs</h3>
-                <p>Hunger, energy, health. Food spoils, winter comes, and a body that runs out of reserves dies. Survival is the pressure everything else grows from.</p>
-            </article>
-            <article class="card">
-                <p class="glyph">≡</p>
-                <h3>Memory</h3>
-                <p>Who gave them food, who took it, who courted them, who stood by. Kindness and grievance both linger, and shape who they turn to next.</p>
-            </article>
+        <p class="eyebrow">The core idea</p>
+        <h2 class="section-title big">Each person is an agent</h2>
+        <p class="section-lead">The simulation is only the body and the world. The mind is an AI agent: every day it gets one person's view of things and answers with what they do. Here is one day of one person, Bria, start to finish.</p>
+
+        <ol class="loop">
+            <li class="step">
+                <p class="step-n">1 · Perceive</p>
+                <h3>What Bria knows</h3>
+                <div class="step-body perceive">
+                    <pre class="minimap" aria-label="Bria's surroundings: food to the north, Kael beside her, a lake to the west">
+<span class="sky">~</span> <span class="sky">~</span> <span class="moss">*</span> <span class="moss">*</span> <span class="dim">.</span>
+<span class="sky">~</span> <span class="moss">*</span> <span class="moss">*</span> <span class="dim">.</span> <span class="dim">.</span>
+<span class="dim">.</span> <span class="moss">*</span> <span class="you">B</span> <span class="who">K</span> <span class="dim">.</span>
+<span class="dim">.</span> <span class="dim">.</span> <span class="dim">.</span> <span class="gold">△</span> <span class="dim">.</span>
+<span class="dim">.</span> <span class="dim">.</span> <span class="dim">.</span> <span class="dim">.</span> <span class="moss">*</span></pre>
+                    <dl class="facts">
+                        <dt>Body</dt><dd>hunger 30% · energy 70% · carrying 9 food</dd>
+                        <dt>Sees</dt><dd>Kael, beside her, looks hungry and carries nothing</dd>
+                        <dt>Believes</dt><dd>food to the north; Kael is trustworthy</dd>
+                        <dt>Remembers</dt><dd>Kael gave her 2 food on day 21</dd>
+                    </dl>
+                </div>
+            </li>
+            <li class="step">
+                <p class="step-n">2 · Ask the mind</p>
+                <h3>Her view, as a prompt</h3>
+                <div class="step-body">
+<pre class="prompt"><span class="dim">## Who you are</span>
+You are Bria: cooperative, outgoing,
+calm. You want to be respected.
+You carry 9 food (it slowly spoils).
+I remember: Kael gave me 2 food
+on day 21.
+
+<span class="dim">## Current Situation (Day 34)</span>
+Autumn. Resources are dwindling.
+Nearby: Kael (looks hungry,
+carrying 0 food)
+
+<span class="dim">## Available Actions</span>
+GATHER · EAT · REST · MOVE
+GIVE &lt;name&gt; &lt;n&gt; · COURT · BUILD
+CLAIM · ATTACK · …</pre>
+                </div>
+            </li>
+            <li class="step step-mind">
+                <p class="step-n">3 · The agent decides</p>
+                <h3>Her mind answers</h3>
+                <div class="step-body">
+<pre class="reply"><span class="gold">REASONING:</span> Kael shared with me when I
+was short. He looks hungry, and I have
+more than I need before winter.
+<span class="gold">ACTION:</span> GIVE Kael 3</pre>
+                    <p class="note">The model is free to choose anything on the list, including stealing, fighting or doing nothing. Nothing in the engine nudges it either way.</p>
+                </div>
+            </li>
+            <li class="step">
+                <p class="step-n">4 · The world resolves</p>
+                <h3>Everyone's choices, at once</h3>
+                <div class="step-body">
+                    <ul class="events">
+                        <li><span class="moss">→</span> Bria gave 3 food to Kael</li>
+                        <li><span class="dim">◇</span> Hana gathered 2 wood</li>
+                        <li><span class="lilac">♥</span> Orin courted Lira</li>
+                        <li><span class="gold">▣</span> Jora claimed land at (7, 2)</li>
+                    </ul>
+                    <p class="note">The engine applies the physics of every action together: who has the food now, what got built, who got hurt. It never decides for anyone.</p>
+                </div>
+            </li>
+            <li class="step">
+                <p class="step-n">5 · Remember</p>
+                <h3>And it changes them</h3>
+                <div class="step-body">
+                    <dl class="facts">
+                        <dt>Kael</dt><dd>“Bria gave me 3 food.” Trust in Bria rises.</dd>
+                        <dt>Bria</dt><dd>“I gave Kael 3 food.” Six left for the winter.</dd>
+                        <dt>Next day</dt><dd>both decide again, a little different for it</dd>
+                    </dl>
+                </div>
+            </li>
+        </ol>
+        <p class="fine">An illustration of one day, in the format the engine sends to the model (shortened). In the browser, where no model runs, the same loop runs on <a href="/instinct/">instinct</a>.</p>
+    </div>
+</section>
+
+<section class="band band-dark">
+    <div class="wrap">
+        <h2 class="section-title">Many minds, one world</h2>
+        <p class="section-lead">Every person is a separate agent with its own context. They don't share a brain, a plan or a goal; they only share the world, and what they can see of each other in it.</p>
+        <div class="day">
+            <div class="day-stage">
+                <p class="step-n">The world turns</p>
+                <p>Food grows and spoils, herds wander, weather and illness come and go.</p>
+            </div>
+            <div class="day-arrow" aria-hidden="true">→</div>
+            <div class="day-stage day-minds">
+                <p class="step-n">Every agent thinks, on its own</p>
+                <div class="minds" aria-label="Ten people, each with their own mind">
+                    {%- for name in ["Bria", "Kael", "Hana", "Orin", "Lira", "Jora", "Niko", "Petra", "Aric", "Faye"] %}
+                    <span class="mind" style="--i: {{ loop.index0 }}"><b>{{ name | truncate(length=1, end="") }}</b><i>{{ name }}</i></span>
+                    {%- endfor %}
+                </div>
+                <p>One call per person per day, each seeing only what that person sees.</p>
+            </div>
+            <div class="day-arrow" aria-hidden="true">→</div>
+            <div class="day-stage">
+                <p class="step-n">All at once</p>
+                <p>Every choice resolves together against the same morning, so walking away doesn't dodge a blow.</p>
+            </div>
+            <div class="day-arrow" aria-hidden="true">→</div>
+            <div class="day-stage">
+                <p class="step-n">Beliefs update</p>
+                <p>Each remembers what they did, what was done to them, and what they saw.</p>
+            </div>
         </div>
+        <p class="day-loop">↻ then the next day, and the next. Over seasons and generations, patterns form that no one wrote.</p>
+    </div>
+</section>
+
+<section class="band">
+    <div class="wrap two-col">
+        <div>
+            <h2 class="section-title">Inside a mind</h2>
+            <p class="section-lead">What the agent is given is layered, from what never changes to what changes every day. Beliefs are not facts: they come from experience, and they can be out of date or wrong.</p>
+            <p><a class="more" href="/how-it-works/">How it works, in full →</a></p>
+        </div>
+        <ol class="layers">
+            <li><span class="layer-name">Identity</span><span>Personality (five traits), values, one life aspiration. Stable for life.</span></li>
+            <li><span class="layer-name">Beliefs</span><span>Where food is, who can be trusted, whose land this is. Learned, and fallible.</span></li>
+            <li><span class="layer-name">Today</span><span>What they see, how hungry and tired they are, who is near, what was offered.</span></li>
+            <li class="layer-act"><span class="layer-name">Action</span><span>Gather, eat, rest, share, court, build, claim, trade, teach, take, fight.</span></li>
+        </ol>
     </div>
 </section>
 
@@ -56,7 +164,7 @@
     <div class="wrap two-col">
         <div>
             <h2 class="section-title">Nothing is scripted</h2>
-            <p class="section-lead">There is no code for markets, chiefs or feuds. There are hungry people, a world with rules, and time. What you see in a run comes out of that.</p>
+            <p class="section-lead">There is no code for markets, chiefs or feuds. There are agents with needs, a world with rules, and time. What you see in a run comes out of that.</p>
         </div>
         <ul class="emerges">
             <li><span class="dot moss"></span><div><b>Sharing.</b> Food flows from those with plenty to those without, most readily between kin and friends, and between people who have given before.</div></li>
@@ -71,18 +179,18 @@
 <section class="band">
     <div class="wrap">
         <h2 class="section-title">Two kinds of mind</h2>
-        <p class="section-lead">The world never decides for anyone. It applies what happens and lets people see it. The choosing is done by one of two minds.</p>
+        <p class="section-lead">The intelligence can come from either of two places. Either way, the world never chooses for anyone.</p>
         <div class="cards cards-2">
             <article class="card card-mind">
                 <p class="label">With a language model</p>
                 <h3>They deliberate</h3>
-                <p>Give Terrarium a Claude API key and each person thinks their day through: who they are, what they believe, what they see, what they need. Whether to share, steal, court, fight or make peace is theirs to decide.</p>
-                <a href="/how-it-works/">How a mind is put together →</a>
+                <p>Give Terrarium a Claude API key and each person is a Claude agent that thinks its day through. Whether to share, steal, court, fight or make peace is the agent's own call.</p>
+                <a href="/run/">Run it with Claude →</a>
             </article>
             <article class="card card-mind">
                 <p class="label">Without one</p>
                 <h3>They act on instinct</h3>
-                <p>In your browser, people run on instinct: rules taken from behavioural ecology and social psychology, from Hamilton's rule for sharing to the logic of contests over territory, with every source listed.</p>
+                <p>In your browser, people run on instinct: fast rules from behavioural ecology and social psychology, from Hamilton's rule for sharing to the logic of contests over land, with every source listed.</p>
                 <a href="/instinct/">The science behind instinct →</a>
             </article>
         </div>
@@ -92,7 +200,7 @@
 <section class="band band-dark">
     <div class="wrap">
         <h2 class="section-title">The world they live in</h2>
-        <p class="section-lead">A grid of land with its own physics, indifferent to the people on it.</p>
+        <p class="section-lead">A grid of land with its own physics, indifferent to the agents on it.</p>
         <ul class="world-grid">
             <li><code class="g moss">*</code><div><b>Seasons</b><span>Spring growth, summer plenty, a winter that kills off standing food.</span></div></li>
             <li><code class="g gold">.</code><div><b>Valleys and uplands</b><span>Fertile land in patches, barren high ground between. Climbing costs effort.</span></div></li>
@@ -110,9 +218,9 @@
         <div class="prose-wide">
             {{ section.content | safe }}
         </div>
-        <a class="seal" href="https://raskell.io">
-            <img src="/img/raskell-stamp.png" alt="The raskell.io seal" width="200" height="200" loading="lazy">
-            <span>produced by <b>raskell.io</b></span>
+        <a class="brand-lockup" href="https://raskell.io">
+            {%- set mark_id = "home" %}{% set mark_face = "happy" %}{% include "partials/mark.html" %}
+            <span>made by <b>raskell.io</b></span>
         </a>
     </div>
 </section>

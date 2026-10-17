@@ -1,0 +1,4 @@
+{#- The raskell.io brandmark, inlined so it takes the text colour. Set mark_id (unique per page)
+    and optionally mark_face (oo, left, right, blink, happy, wink, squint, sleepy, dizzy). -#}
+{%- set face = mark_face | default(value="oo") -%}
+<span class="mark" aria-hidden="true">{{ load_data(path="static/images/raskell-mark.svg", format="plain") | replace(from="__id__", to=mark_id) | replace(from='data-face="oo"', to='data-face="' ~ face ~ '"') | safe }}</span>

@@ -285,17 +285,212 @@ h1, h2, h3 { color: var(--fg-strong); text-wrap: balance; line-height: 1.2; }
     align-items: center;
 }
 .prose-wide { max-width: 66ch; p:first-child { margin-top: 0; } }
-.seal {
+// raskell.io brandmark: expressions live in the mark's mask; data-face on the <svg> picks one
+.mark { display: inline-block; width: 2.25rem; height: 2.25rem; color: var(--fg-strong); }
+.mark svg { display: block; width: 100%; height: 100%; }
+.mark .f { display: none; }
+.mark svg[data-face="oo"] .f-oo,
+.mark svg[data-face="left"] .f-left,
+.mark svg[data-face="right"] .f-right,
+.mark svg[data-face="blink"] .f-blink,
+.mark svg[data-face="sleepy"] .f-sleepy,
+.mark svg[data-face="happy"] .f-happy,
+.mark svg[data-face="wink"] .f-wink,
+.mark svg[data-face="squint"] .f-squint,
+.mark svg[data-face="dizzy"] .f-dizzy { display: inline; }
+.brand-lockup {
     display: grid;
     justify-items: center;
-    gap: 8px;
+    gap: 10px;
     text-decoration: none;
     color: var(--muted);
     font-family: var(--mono);
     font-size: 13px;
-    img { width: 160px; height: 160px; transform: rotate(-6deg); }
+    .mark { width: 120px; height: 120px; }
     b { color: var(--fg); }
+    &:hover .mark { color: var(--moss); }
 }
+
+// ---------- The agent loop ----------
+.section-title.big { font-size: clamp(32px, 4.4vw, 52px); }
+.agents { background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(230, 198, 131, 0.07), transparent 70%),
+    var(--bg); }
+.loop {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: grid;
+    // Three steps, then two wider ones, so the row fills
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 18px;
+    > li { grid-column: span 2; }
+    > li:nth-child(n + 4) { grid-column: span 3; }
+}
+@media (max-width: 1080px) {
+    .loop { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .loop > li, .loop > li:nth-child(n + 4) { grid-column: span 1; }
+    .loop > li:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 700px) {
+    .loop { grid-template-columns: minmax(0, 1fr); }
+}
+.step {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 18px 20px;
+    min-width: 0;
+    h3 { margin: 0; font-size: 17px; }
+}
+.step-mind {
+    border-color: var(--moss-deep);
+    box-shadow: 0 0 0 1px rgba(159, 197, 139, 0.25), 0 18px 40px rgba(111, 154, 94, 0.12);
+}
+.step-n {
+    margin: 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+.step-mind .step-n { color: var(--moss); }
+.step-body { display: grid; gap: 12px; min-width: 0; }
+.perceive { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+.minimap {
+    margin: 0;
+    padding: 10px 12px;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.35;
+}
+.prompt, .reply {
+    margin: 0;
+    padding: 12px 14px;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.55;
+    overflow-x: auto;
+    color: var(--fg);
+}
+.reply { font-size: 13.5px; border-color: var(--moss-deep); }
+.facts {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 4px 12px;
+    font-size: 15px;
+    line-height: 1.4;
+    dt { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 2px; }
+    dd { margin: 0; }
+}
+.events {
+    list-style: none;
+    margin: 0;
+    padding: 10px 14px;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    li:first-child { color: var(--fg-strong); }
+}
+.note { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.45; }
+.fine { margin: 20px 0 0; font-size: 15px; color: var(--muted); }
+.dim { color: var(--muted); opacity: 0.7; }
+.sky { color: var(--sky); }
+.moss { color: var(--moss); }
+.gold { color: var(--gold); }
+.lilac { color: var(--lilac); }
+.who { color: var(--fg-strong); font-weight: 700; }
+.you { background: var(--gold); color: var(--bg-deep); font-weight: 700; }
+
+// ---------- A day ----------
+.day {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.6fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 14px;
+    align-items: stretch;
+}
+.day-stage {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px;
+    min-width: 0;
+    p { margin: 0; font-size: 15px; line-height: 1.45; }
+    .step-n { margin-bottom: 8px; }
+}
+.day-minds { border-color: var(--moss-deep); }
+.day-minds .step-n { color: var(--moss); }
+.day-arrow { align-self: center; font-family: var(--mono); color: var(--muted); font-size: 20px; }
+.minds {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    margin: 4px 0 12px;
+}
+.mind {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    b {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--bg-deep);
+        background: var(--moss);
+        box-shadow: 0 0 0 4px rgba(159, 197, 139, 0.15);
+        animation: think 2.6s ease-in-out infinite;
+        animation-delay: calc(var(--i) * 0.26s);
+    }
+    i { font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+}
+@keyframes think {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(159, 197, 139, 0.12); }
+    50% { box-shadow: 0 0 0 7px rgba(230, 198, 131, 0.28); }
+}
+.day-loop { margin: 18px 0 0; font-family: var(--mono); font-size: 14px; color: var(--muted); }
+
+// ---------- Layers ----------
+.layers {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    li {
+        display: grid;
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 16px;
+        padding: 16px 18px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-bottom: 0;
+        font-size: 16px;
+        line-height: 1.45;
+    }
+    li:first-child { border-radius: 10px 10px 0 0; }
+    li:last-child { border-bottom: 1px solid var(--line); border-radius: 0 0 10px 10px; }
+}
+.layer-name { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
+.layer-act { border-color: var(--moss-deep) !important; .layer-name { color: var(--moss); } }
 
 // ---------- Articles ----------
 .article-wrap { padding-block: clamp(40px, 6vw, 72px); }
@@ -352,7 +547,7 @@ h1, h2, h3 { color: var(--fg-strong); text-wrap: balance; line-height: 1.2; }
     max-width: 52ch;
     p { margin: 0 0 6px; font-size: 16px; }
 }
-.footer-seal img { width: 56px; height: 56px; }
+.footer-mark-link { flex: none; .mark { width: 48px; height: 48px; } &:hover .mark { color: var(--moss); } }
 .footer-mark { font-weight: 700; color: var(--fg-strong); font-size: 16px !important; }
 .footer-links {
     display: grid;
@@ -364,11 +559,20 @@ h1, h2, h3 { color: var(--fg-strong); text-wrap: balance; line-height: 1.2; }
     a:hover { color: var(--moss); }
 }
 
+@media (max-width: 1080px) {
+    .day { grid-template-columns: minmax(0, 1fr); }
+    .day-arrow { transform: rotate(90deg); justify-self: center; }
+}
 @media (max-width: 900px) {
     .hero-grid, .two-col, .intro { grid-template-columns: minmax(0, 1fr); }
-    .seal { justify-self: start; }
+    .brand-lockup { justify-self: start; }
+}
+@media (max-width: 520px) {
+    .perceive { grid-template-columns: minmax(0, 1fr); }
+    .minds { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) {
+    .mind b { animation: none; }
     html { scroll-behavior: auto; }
     * { transition: none !important; }
 }

@@ -3,7 +3,7 @@
 
 base_url = "https://terrarium.raskell.io"
 title = "Terrarium"
-description = "A world simulation where people forage, share, quarrel, build, fall ill and raise children, and nobody scripts what they do. Watch it in your browser."
+description = "A world where every person is an AI agent with a mind of its own. They forage, share, quarrel, build, fall ill and raise children, and nobody scripts what they do. Watch it in your browser."
 default_language = "en"
 
 compile_sass = true
@@ -23,7 +23,7 @@ anchors = "on"
 [extra]
 author = "raskell.io"
 tagline = "A small world, and the people who try to live in it"
-pitch = "A world simulation of emergent societies"
+pitch = "A world of AI agents"
 github = "https://github.com/raskell-io/terrarium"
 codeberg = "https://codeberg.org/raskell-io/terrarium"
 docs = "https://github.com/raskell-io/terrarium/tree/main/docs"
