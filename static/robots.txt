@@ -1,4 +1,7 @@
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 Sitemap: https://terrarium.raskell.io/sitemap.xml
+
+# For agents: https://terrarium.raskell.io/llms.txt . Made by Raffael Schneider, https://raskell.io/

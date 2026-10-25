@@ -1,0 +1,22 @@
+# Terrarium
+
+> A societal simulation engine where LLM-powered agents form emergent civilizations.
+
+Terrarium is a societal petri dish: you make a world with rules, fill it with AI agents, one mind per person, and see what grows. Each agent has a personality, needs, memories and beliefs that can be wrong. Nothing like markets, chiefs or alliances is written into the code; the question is whether such structure emerges on its own. It is for anyone curious about agent-based models, emergence and artificial societies. The engine is written in Rust. A viewer compiled to WebAssembly runs in the browser at https://terrarium.raskell.io/play/ , entirely on the visitor's machine with nothing sent anywhere; there, people act on instinct, rules taken from behavioural ecology and social psychology. Built from source, it runs in a terminal, and with an Anthropic API key every person deliberates through Claude. Terrarium is free and open source under the MIT license, and is in active development.
+
+## Links
+
+- [Terrarium](https://terrarium.raskell.io/): the website
+- [Watch a world](https://terrarium.raskell.io/play/): the browser viewer
+- [Source code](https://github.com/raskell-io/terrarium): the repository on GitHub (mirror: https://codeberg.org/raskell-io/terrarium)
+- [Docs](https://github.com/raskell-io/terrarium/tree/main/docs): concept, architecture, instincts, observer protocol and terminal viewer
+- [raskell.io apps](https://raskell.io/apps/): Terrarium among the other apps by the author
+- [Author](https://raskell.io/about/): Raffael Schneider
+
+## Optional
+
+- [How it works](https://terrarium.raskell.io/how-it-works/)
+- [The world](https://terrarium.raskell.io/world/)
+- [Instinct](https://terrarium.raskell.io/instinct/): how people decide when no language model is thinking for them, with every source listed
+- [Run it](https://terrarium.raskell.io/run/): in the browser, in a terminal, or with Claude
+- [Website source](https://github.com/raskell-io/terrarium.raskell.io)

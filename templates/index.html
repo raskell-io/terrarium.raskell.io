@@ -1,5 +1,41 @@
 {% extends "base.html" %}
 {% block body_class %}home{% endblock %}
+{% block jsonld %}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "SoftwareApplication",
+                "@id": "https://terrarium.raskell.io/#app",
+                "name": "Terrarium",
+                "description": "A societal simulation engine where LLM-powered agents form emergent civilizations. Each agent has a personality, needs, memories, and beliefs that can be wrong. You set the rules of the world, then watch for markets, hierarchies, and alliances to emerge on their own.",
+                "url": "https://terrarium.raskell.io/",
+                "image": "https://terrarium.raskell.io/img/og-image.png",
+                "applicationCategory": "SimulationApplication",
+                "operatingSystem": "Web browser",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "isAccessibleForFree": true,
+                "license": "https://opensource.org/licenses/MIT",
+                "codeRepository": "https://github.com/raskell-io/terrarium",
+                "sameAs": ["https://github.com/raskell-io/terrarium", "https://codeberg.org/raskell-io/terrarium", "https://raskell.io/apps/"],
+                "inLanguage": "en",
+                "author": { "@type": "Person", "@id": "https://raskell.io/#person", "name": "Raffael Schneider", "url": "https://raskell.io/" },
+                "creator": { "@type": "Person", "@id": "https://raskell.io/#person", "name": "Raffael Schneider", "url": "https://raskell.io/" }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://terrarium.raskell.io/#website",
+                "name": "Terrarium",
+                "url": "https://terrarium.raskell.io/",
+                "inLanguage": "en",
+                "about": { "@id": "https://terrarium.raskell.io/#app" },
+                "publisher": { "@id": "https://raskell.io/#person" }
+            }
+        ]
+    }
+    </script>
+{%- endblock jsonld %}
 {% block content %}
 
 <section class="hero">

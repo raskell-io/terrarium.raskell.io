@@ -1,6 +1,6 @@
 +++
 title = "Terrarium"
-description = "A world where every person is an AI agent with a mind of its own. They forage, share, quarrel, build, fall ill and raise children, and nobody scripts what they do. Watch it in your browser."
+description = "A world where every person is an AI agent with a mind of its own. They forage, share, quarrel and raise children, and no one scripts it. Watch in your browser."
 template = "index.html"
 +++
 
